@@ -8,7 +8,7 @@ function Navbar(props) {
       <div>
         <p style={{ backgroundColor: "#FFA500", padding: "10px" }}>
           {" "}
-          +351-919063304
+          +351-4554151
           <Link
             href="\login"
             style={{ float: "right", marginRight: "30px", color: "#FFA500" }}
@@ -22,11 +22,17 @@ function Navbar(props) {
         </p>
       </div>
 
-      <nav className="navbar_navbar_wrapper bg-gray-100 hover:bg-orange-100">
+      <nav className="navbar_navbar_wrapper bg-gray-100 hover:bg-orange-100 justify-center">
         {/* <Image src={Logo} style={{width:"450px", float:"left",marginTop:"50px",marginLeft:"30px"}}/>   */}
         <ul
-          className="menu-bar"
-          style={{ fontSize: "20px", fontWeight: "bold", marginTop: "00px", padding: "50px", padding: "50px" }}
+          className="menu-bar pl-10"
+          style={{
+            fontSize: "20px",
+            fontWeight: "bold",
+            marginTop: "00px",
+            padding: "50px",
+            padding: "50px",
+          }}
         >
           <li
             className="menu-item"
@@ -35,18 +41,19 @@ function Navbar(props) {
             <Link href="\home">Home</Link>
           </li>
           <li
-            className="menu-item"
+            className="menu-item flex center pr-50"
             style={{ color: props.pageName === "Products" && "orange" }}
           >
             <Link href="\produto">Produtos</Link>
           </li>
           <li
-            className="menu-item"
+            className="menu-item flex center
+            "
             style={{ color: props.pageName === "Contacto" && "orange" }}
           >
             <Link href="\contacto">Contacte-nos</Link>
           </li>
-          <li>
+          <li className="menu-item  flex center pr-50">
             <Link
               href="\sobrenos"
               style={{ color: props.pageName === "Sobrenos" && "orange" }}

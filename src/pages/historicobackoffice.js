@@ -6,7 +6,6 @@ const Historicoback = () => {
 
   useEffect(() => {
     historico();
-    remover()
   }, []);
 
   async function historico() {
@@ -28,8 +27,7 @@ const Historicoback = () => {
     }
   }
 
-
-  async function remover() {
+  async function remover(product) {
     try {
       const res = await fetch("/api/cliente", {
         method: 'DELETE',
@@ -39,7 +37,18 @@ const Historicoback = () => {
       });
       if (res.status === 200) {
         const data = await res.json();
-        console.log(data); 
+        if (data.success) {
+          await fetch("/api/cliente", {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nome: product.nome }),
+          });
+          historico();
+        } else {
+          console.error('Failed to update cliente');
+        }
       }
     } catch (error) {
       console.error(error);
@@ -49,51 +58,51 @@ const Historicoback = () => {
   return (
     <>
       <NavbarBackOffice pageName="historico" />
-      
-      <p
+      <div
+        className="bg-gray-100 px-4 py-6 min-h-full lg:min-h-screen"
         style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          display: 'flex',
-          fontSize: '30px',
+          borderRadius: '30px',
+          marginTop: '50px',
+          marginLeft: '350px',
         }}
       >
-        Historico
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mx-auto max-w-6xl">
-        {historicoProduto && historicoProduto.length > 0 ? (
-         <ul>
-  {historicoProduto.map((product) => (
-    <li key={product._id}>
-      <p>Id: {product.id}</p>
-      <p>Nome: {product.nomeDoCliente}</p>
-      <p>BI: {product.biDoCliente}</p>
-      <p>Tempo: {product.tempoDeUso}</p>
-      <p>Custo: {product.custoDoAluger}</p>
-      <p>Condições: {product.condicocoesDoProduto}</p>
-      <p>Descrição: {product.descricaoImportante}</p>
-      <button
-        style={{
-          float: 'right',
-          background: 'red',
-          marginTop:'10px',
-          marginRight: '5px',
-          borderRadius: '10px',
-          height: '40px',
-          width: '90px',
-        }}
-        type="button"
-        onClick={remover}
-      >
-        Remover
-      </button>
-    </li>
-  ))}
-</ul>
-
-        ) : (
-          <p>No historical data available</p>
-        )}
+        <p className="text-indigo-100 mt-4 font-quicksand tracking-wider leading-7">
+          Gestão dos produtos a alugar.
+        </p>
+        <div className="grid grid-cols-4 gap-4 mt-6">
+          {historicoProduto && historicoProduto.length > 0 ? (
+            historicoProduto.map((product) => (
+              product.nomeDoCliente && (
+                <div key={product._id} className="bg-white p-4 rounded-md">
+                  <p>Id: {product.id}</p>
+                  <p>Nome: {product.nomeDoCliente}</p>
+                  <p>BI: {product.biDoCliente}</p>
+                  <p>Tempo: {product.tempoDeUso}</p>
+                  <p>Custo: {product.custoDoAluger}</p>
+                  <p>Condições: {product.condicocoesDoProduto}</p>
+                  <p>Descrição: {product.descricaoImportante}</p>
+                  <button
+                    style={{
+                      float: 'right',
+                      background: 'red',
+                      marginTop: '10px',
+                      marginRight: '5px',
+                      borderRadius: '10px',
+                      height: '40px',
+                      width: '90px',
+                    }}
+                    type="button"
+                    onClick={() => remover(product)}
+                  >
+                    Remover
+                  </button>
+                </div>
+              )
+            ))
+          ) : (
+            <p>No historical data available</p>
+          )}
+        </div>
       </div>
     </>
   );

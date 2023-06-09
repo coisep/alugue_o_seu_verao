@@ -3,6 +3,7 @@ import Link from "next/link";
 function NavbarBackOffice(props) {
   const handleClick = () => {
     localStorage.removeItem("token");
+    window.location.href = `../home`;
   };
 
   return (

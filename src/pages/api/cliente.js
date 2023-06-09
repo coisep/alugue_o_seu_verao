@@ -36,7 +36,6 @@ export default async function cliente(req, res) {
         res
             .status(200)
             .json({ insertedCliente, message: "Client created successfully" });
-            console.log(req.body)
         } else if (method==="DELETE"){
             const { id } = req.query;
             const deletedCliente = await clientesCollection.deleteOne({ id: id });

@@ -4,6 +4,7 @@ const FormArtigos = () => {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [preço, setPreço] = useState("");
+  const [url,setUrl]=useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,7 +14,6 @@ const FormArtigos = () => {
       quantidade,
       preço,
     };
-
     try {
       const response = await fetch("/api/artigos", {
         method: "POST",
@@ -32,7 +32,7 @@ const FormArtigos = () => {
       console.error("Erro:", error);
     }
   };
-
+  
   return (
     <>
       <div
@@ -94,6 +94,23 @@ const FormArtigos = () => {
               onChange={(e) => setPreço(e.target.value)}
             />
             Preço
+          </label>
+          <br/>
+          <label htmlFor="url">
+            <input
+              style={{
+                padding: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                fontSize: "16px",
+                outline: "none",
+                width: "200px",
+              }}
+              type="url"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+            Url
           </label>
           <br />
           <div className="flex items-start w-[90px]">
