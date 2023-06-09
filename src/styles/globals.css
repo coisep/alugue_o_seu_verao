@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+
+body {
+  @apply bg-yellow-50;
+  font-family: 'Quicksand', sans-serif;
+  background-image: linear-gradient(#fcfaf2, white, orange);
+}
+
+h1 {
+font-family: 'Quicksand', sans-serif;
+}
+
+ul{
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+  justify-content: space-between;
+
+}
+.li produto-link{
+  display: flex;
+  color: aqua;
+}
+.footer {
+  font-family: 'Quicksand', sans-serif;
+  }
+.home {
+font-family: 'Quicksand', sans-serif
+}
+
+.float-button {
+  text-decoration: none;
+  position: fixed;
+  padding: 10px;
+  padding-right: 15px;
+  bottom: 30px;
+  right: 30px;
+  color: #fff;
+  background-color:#25d366;
+  border-radius: 25px 30px 5px 25px;
+  z-index: 100;
+  font-family: Arial;
+  font-size: 17px;
+  animation: whatsapp-animation 0.5s ease-in-out;
+  box-shadow: 1px 2px 5px 2px rgba(30,30,30,0.3);
+  transition:all 0.3s ease-out;
+}
+
+.float-button {
+  transition: transform 0.4s;
+}
+
+.float-button:hover {
+  transform: scale(1.10);
+}
+
+
+@keyframes whatsapp-animation {
+  from {
+      opacity: 0%;
+  }
+
+  to {
+      opacity: 100%
+  }
+}
+
+@media screen and (max-width: 545px) {
+  span {
+      display: none;
+  }
+
+
+
+  .fa-whatsapp {
+      font-size: 22px !important;
+      padding: 4px;
+  }
+}
