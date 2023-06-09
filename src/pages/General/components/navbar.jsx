@@ -22,11 +22,11 @@ function Navbar(props) {
         </p>
       </div>
 
-      <nav className="navbar_navbar_wrapper">
+      <nav className="navbar_navbar_wrapper bg-gray-100 hover:bg-orange-100">
         {/* <Image src={Logo} style={{width:"450px", float:"left",marginTop:"50px",marginLeft:"30px"}}/>   */}
         <ul
           className="menu-bar"
-          style={{ fontSize: "20px", fontWeight: "bold", marginTop: "30px" }}
+          style={{ fontSize: "20px", fontWeight: "bold", marginTop: "00px", padding: "50px", padding: "50px" }}
         >
           <li
             className="menu-item"

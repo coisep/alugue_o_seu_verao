@@ -57,7 +57,7 @@ const Contacto = () => {
                         <input style={{ borderRadius: "5px", background: "#f7f7f7", boxSizing: "border-box", }} type="textarea" onChange={...(e) => setMesagem(e.target.value)} value={mensagem} required />
                       </div>
                     </div>
-                    <button onClick style={{ marginTop: "20px", borderRadius: "5px", backgroundColor: "lightgreen", display: "flex", justifyContent: "center" }} type='submit' >Submeter</button>
+                    <button onClick style={{ marginTop: "20px", borderRadius: "5px", backgroundColor: "orange", display: "flex", justifyContent: "center" }} type='submit' >Submeter</button>
                   </form>
                 </div>
               </form>
@@ -65,6 +65,9 @@ const Contacto = () => {
           </div>
         </section>
       </div>
+
+
+
       <div className="flex justify-center mt-4">
         <video className="w-3/4 md:w-1/2" autoPlay controls>
           <source src="/Images/Untitled.mp4" type="video/mp4" />
